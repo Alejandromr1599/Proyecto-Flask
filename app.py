@@ -19,15 +19,15 @@ def contact():
 
     if search_term and selected_genre:
         for pelicula in datos:
-            if search_term.lower() in pelicula['title'].lower() and selected_genre.lower() in pelicula.get('genre', '').lower():
-                resultados.append(pelicula)
+            if search_term.lower() in peliculas['title'].lower() and selected_genre.lower() in peliculas.get('genre', '').lower():
+                resultados.append(peliculas)
     elif search_term:
         for pelicula in datos:
-            if search_term.lower() in pelicula['title'].lower():
-                resultados.append(pelicula)
+            if search_term.lower() in peliculas['title'].lower():
+                resultados.append(peliculas)
     elif selected_genre:
         for pelicula in datos:
-            if selected_genre.lower() in pelicula.get('genre', '').lower():
+            if selected_genre.lower() in peliculas.get('genre', '').lower():
                 resultados.append(pelicula)
     else:
         resultados = datos

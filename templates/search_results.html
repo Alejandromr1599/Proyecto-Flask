@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de la Búsqueda</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Resultados de la Búsqueda</h1>
+        <ul class="list-group">
+        {% for result in results %}
+            <li class="list-group-item">
+                <h5>Año: {{ result.year }}</h5>
+                <p>Categoría: {{ result.category }}</p>
+                <h6>Laureados:</h6>
+                <ul>
+                {% for laureate in result.laureates %}
+                    <li>
+                        <a href="{{ url_for('details', year=result.year, category=result.category, firstname=laureate.firstname, surname=laureate.surname) }}">
+                            {{ laureate.firstname }} {{ laureate.surname }}
+                        </a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+        </ul>
+        <div class="text-center mt-3">
+            <a href="/search_form" class="btn btn-secondary">Nueva Búsqueda</a>
+            <br>
+            <a href="/" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
+    </div>
+</body>
+</html>

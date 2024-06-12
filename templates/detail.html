@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% block title %}Detalles{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Premio Nobel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Detalles del Premio Nobel</h1>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Año: {{ item.year }}</h5>
+                <p class="card-text"><strong>Categoría:</strong> {{ item.category }}</p>
+                <p class="card-text"><strong>Nombre del Premio Nobel:</strong> {{ item.laureates[0].firstname }} {{ item.laureates[0].surname }}</p>
+                <p class="card-text"><strong>Motivación:</strong> {{ item.laureates[0].motivation }}</p>
+                <p class="card-text"><strong>Compartido:</strong> {{ item.laureates[0].share }}</p>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <a href="/search_form" class="btn btn-secondary">Nueva Búsqueda</a>
+            <br>
+            <a href="/" class="btn btn-secondary">Volver al Inicio</a>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
